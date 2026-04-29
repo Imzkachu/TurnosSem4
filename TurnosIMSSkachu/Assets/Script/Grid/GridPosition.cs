@@ -3,7 +3,7 @@
 
 using System;
 
-public struct GridPosition : IEquatable<GridPosition> //Calcula los lugares
+public struct GridPosition : IEquatable<GridPosition>
 {
     public int x;
     public int z;

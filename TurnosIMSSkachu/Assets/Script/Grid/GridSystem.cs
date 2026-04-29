@@ -1,35 +1,34 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridSystem //el sistema de cuadritos
+public class GridSystem<TGridObject>
 {
     private int width;
     private int height;
-    //dimencion de la matriz
-    private float cellSize;//tamaño del mosaico
-    private GridObject[,] gridObjectArray;//esta es la matriz
+    private float cellSize;
+    private TGridObject[,] gridObjectArray;
 
-    public GridSystem(int width, int height, float cellSize) //instanciar la matriz
+    public GridSystem(int width, int height, float cellSize, Func<GridSystem<TGridObject>, GridPosition, TGridObject> createGridObject)
     {
         this.width = width;
         this.height = height;
         this.cellSize = cellSize;
 
-        gridObjectArray = new GridObject[width, height];
+        gridObjectArray = new TGridObject[width, height];
 
         for (int x = 0; x < width; x++)
         {
             for (int z = 0; z < height; z++)
             {
                 GridPosition gridPosition = new GridPosition(x, z);
-                gridObjectArray[x, z] = new GridObject(this, gridPosition);
+                gridObjectArray[x, z] = createGridObject(this, gridPosition);
             }
         }
     }
 
-    //traducir cordenada (x,y,z) a ubicacion en unity
-    public Vector3 GetWorldPosition(GridPosition gridPosition) 
+    public Vector3 GetWorldPosition(GridPosition gridPosition)
     {
         return new Vector3(gridPosition.x, 0, gridPosition.z) * cellSize;
     }
@@ -57,7 +56,7 @@ public class GridSystem //el sistema de cuadritos
         }
     }
 
-    public GridObject GetGridObject(GridPosition gridPosition)
+    public TGridObject GetGridObject(GridPosition gridPosition)
     {
         return gridObjectArray[gridPosition.x, gridPosition.z];
     }

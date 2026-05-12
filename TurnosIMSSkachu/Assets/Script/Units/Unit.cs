@@ -3,13 +3,15 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-    private const int MAX_ACTION_POINTS = 2;
-
 	
-    private GridPosition gridPosition;
-    private int actionPoints = MAX_ACTION_POINTS;
+    private const int ACTION_POINTS_MAX = 2;
 
     [SerializeField] private bool isEnemy;
+
+    private GridPosition gridPosition;
+    private int actionPoints = ACTION_POINTS_MAX;
+
+
 	
 	private void Awake()
 	{
@@ -20,9 +22,10 @@ public class Unit : MonoBehaviour
 	private void Start()
 	{
 		// leemos en donde está la unidad
+        gridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
 		
 		//Le avisamos al grid del nivel que tiene una unidad en esa posición
-
+        LevelGrid.Instance.AddUnitAtGridPosition(gridPosition, this);
 
         // Evento de cuando se muera la unidad
         // Avisamos que una unidad nueva fue creada
@@ -64,7 +67,7 @@ public class Unit : MonoBehaviour
         return transform.position;
     }
 
-    /*
+    
 	public bool TrySpendActionPointsToTakeAction(BaseAction baseAction)
     {
         if (CanSpendActionPointsToTakeAction(baseAction))
@@ -75,9 +78,9 @@ public class Unit : MonoBehaviour
         {
             return false;
         }
-    }*/
+    }
 
-    /*
+    
 	public bool CanSpendActionPointsToTakeAction(BaseAction baseAction)
     {
         if (actionPoints >= baseAction.GetActionPointsCost())
@@ -87,15 +90,15 @@ public class Unit : MonoBehaviour
         {
             return false;
         }
-    }*/
+    }
 
-    /*
+    
     private void SpendActionPoints(int amount)
     {
         actionPoints -= amount;
 
-        OnAnyActionPointsChanged?.Invoke(this, EventArgs.Empty);
-    }*/
+        //OnAnyActionPointsChanged?.Invoke(this, EventArgs.Empty);
+    }
 
     public int GetActionPoints()
     {

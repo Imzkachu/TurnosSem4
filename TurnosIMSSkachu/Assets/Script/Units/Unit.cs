@@ -5,8 +5,13 @@ public class Unit : MonoBehaviour
 {
 	
     private const int ACTION_POINTS_MAX = 2;
-
+    //eventos
+    public static event EventHandler OnAnyActionPointsChanged;
+    public static event EventHandler OnAnyUnitDead;
+    public static event EventHandler OnAnyUnitSpawned;
     [SerializeField] private bool isEnemy;
+
+    private BaseAction[] baseActionArray;
 
     private GridPosition gridPosition;
     private int actionPoints = ACTION_POINTS_MAX;
@@ -15,7 +20,8 @@ public class Unit : MonoBehaviour
 	
 	private void Awake()
 	{
-        
+        //leer acciones asignadas
+        baseActionArray = GetComponents<BaseAction>();
         
 	}
 	
@@ -29,6 +35,7 @@ public class Unit : MonoBehaviour
 
         // Evento de cuando se muera la unidad
         // Avisamos que una unidad nueva fue creada
+        OnAnyUnitSpawned?.Invoke(this, EventArgs.Empty);
 	}
 	
 	void Update()
@@ -57,10 +64,10 @@ public class Unit : MonoBehaviour
 		return gridPosition;
 	}
 	
-	/*public BaseAction[] GetBaseActionArray()
+	public BaseAction[] GetBaseActionArray()
 	{
 		return baseActionArray;
-	}*/
+	}
 
 	public Vector3 GetWorldPosition()
     {

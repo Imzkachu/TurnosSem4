@@ -41,11 +41,19 @@ public class Unit : MonoBehaviour
 	void Update()
 	{
 		// vemos donde está ahorita la unidad
+        GridPosition posN = LevelGrid.Instance.GetGridPosition(transform.position);
 			
 		// preguntamos si esta posición es diferente que la guardada
+        if (posN != gridPosition)
+        {
+            GridPosition oldPos = gridPosition;
+            gridPosition = posN;
+
+            LevelGrid.Instance.UnitMovedGridPosition(this, oldPos, posN);
+        }
 	}
 	
-    /*
+    
     public T GetAction<T>() where T : BaseAction
     {
         foreach (BaseAction baseAction in baseActionArray)
@@ -57,7 +65,7 @@ public class Unit : MonoBehaviour
         }
         return null;
     }
-    */
+    
 
 	public GridPosition GetGridPosition()
 	{
@@ -104,7 +112,7 @@ public class Unit : MonoBehaviour
     {
         actionPoints -= amount;
 
-        //OnAnyActionPointsChanged?.Invoke(this, EventArgs.Empty);
+        OnAnyActionPointsChanged?.Invoke(this, EventArgs.Empty);
     }
 
     public int GetActionPoints()

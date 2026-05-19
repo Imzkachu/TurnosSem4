@@ -3,8 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class LevelGrid : MonoBehaviour
 {
+
+    //events
+    public event EventHandler OnAnyUnitMovedGridPosition;
+
     private GridSystem<GridObject> gridSystem;
     [SerializeField] private int width;
     [SerializeField] private int height;
@@ -57,22 +62,22 @@ public class LevelGrid : MonoBehaviour
         casilla.RemoveUnit(unidad);
     }
 
-    /*
+    
     public List<Unit> GetUnitListAtGridPosition(GridPosition pos)
     {
         GridObject casilla = gridSystem.GetGridObject(pos);
         return casilla.GetUnitList();
-    }*/
+    }
 
-    /*
+    
     public void UnitMovedGridPosition(
-        Unidad unidad, GridPosition origen, GridPosition destino)
+        Unit unidad, GridPosition origen, GridPosition destino)
     {
         RemoveUnitAtGridPosition(origen, unidad);
         AddUnitAtGridPosition(destino, unidad);
         
         OnAnyUnitMovedGridPosition?.Invoke(this, EventArgs.Empty);
-    }*/
+    }
 
     public GridPosition GetGridPosition(Vector3 worldPos) => gridSystem.GetGridPosition(worldPos);
     

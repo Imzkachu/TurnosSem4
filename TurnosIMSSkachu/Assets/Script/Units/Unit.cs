@@ -15,6 +15,7 @@ public class Unit : MonoBehaviour
 
     private GridPosition gridPosition;
     private int actionPoints = ACTION_POINTS_MAX;
+    private HealthSystem healthSystem;
 
 
 	
@@ -22,6 +23,7 @@ public class Unit : MonoBehaviour
 	{
         //leer acciones asignadas
         baseActionArray = GetComponents<BaseAction>();
+        healthSystem = GetComponent<HealthSystem>();
         
 	}
 	
@@ -34,6 +36,7 @@ public class Unit : MonoBehaviour
         LevelGrid.Instance.AddUnitAtGridPosition(gridPosition, this);
 
         // Evento de cuando se muera la unidad
+        healthSystem.OnDead += HealthSystem_OnDead;
         // Avisamos que una unidad nueva fue creada
         OnAnyUnitSpawned?.Invoke(this, EventArgs.Empty);
 	}
@@ -137,13 +140,12 @@ public class Unit : MonoBehaviour
         return isEnemy;
     }
 
-    /*
+    
     public void Damage(int damageAmount)
     {
         healthSystem.Damage(damageAmount);
-    }*/
+    }
 
-    /* nuevo
     private void HealthSystem_OnDead(object sender, EventArgs e)
     {
         LevelGrid.Instance.RemoveUnitAtGridPosition(gridPosition, this);
@@ -151,12 +153,11 @@ public class Unit : MonoBehaviour
         Destroy(gameObject);
 
         OnAnyUnitDead?.Invoke(this, EventArgs.Empty);
-    }*/
+    }
     
-    /* nuevo
     public float GetHealthNormalized()
     {
         return healthSystem.GetHealthNormalized();
-    }*/
+    }
 
 }

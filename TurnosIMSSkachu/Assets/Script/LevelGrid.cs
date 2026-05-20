@@ -38,7 +38,7 @@ public class LevelGrid : MonoBehaviour
         new GridObject (g , gp) //colocar el azulejo
         );
 
-        gridSystem.CreateDebugObjects(gridDebugObjectPrefab);
+        //gridSystem.CreateDebugObjects(gridDebugObjectPrefab);
     }
 
     private void Start()

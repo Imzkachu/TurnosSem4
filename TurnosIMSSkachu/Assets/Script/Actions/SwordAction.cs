@@ -6,6 +6,8 @@ using UnityEngine;
 public class SwordAction : BaseAction
 {
 
+    [SerializeField]private int swordDamage = 50;
+
     public static event EventHandler OnAnySwordHit;
 
     public event EventHandler OnSwordActionStarted;
@@ -36,10 +38,10 @@ public class SwordAction : BaseAction
         switch (state)
         {
             case State.SwingingSwordBeforeHit:
-                //Vector3 aimDir = (targetUnit.GetWorldPosition() - unit.GetWorldPosition()).normalized;
+                Vector3 aimDir = (targetUnit.GetWorldPosition() - unit.GetWorldPosition()).normalized;
 
-                //float rotateSpeed = 10f;
-                //transform.forward = Vector3.Lerp(transform.forward, aimDir, Time.deltaTime * rotateSpeed);
+                float rotateSpeed = 10f;
+                transform.forward = Vector3.Lerp(transform.forward, aimDir, Time.deltaTime * rotateSpeed);
                 break;
             case State.SwingingSwordAfterHit:
                 break;
@@ -56,15 +58,16 @@ public class SwordAction : BaseAction
         switch (state)
         {
             case State.SwingingSwordBeforeHit:
-                //state = State.SwingingSwordAfterHit;
-                //float afterHitStateTime = 0.5f;
-                //stateTimer = afterHitStateTime;
-                //targetUnit.Damage(100);
-                //OnAnySwordHit?.Invoke(this, EventArgs.Empty);
+                state = State.SwingingSwordAfterHit;
+                float afterHitStateTime = 0.5f;
+                stateTimer = afterHitStateTime;
+                targetUnit.Damage(swordDamage);
+                OnAnySwordHit?.Invoke(this, EventArgs.Empty);
                 break;
+
             case State.SwingingSwordAfterHit:
-                //OnSwordActionCompleted?.Invoke(this, EventArgs.Empty);
-                //ActionComplete();
+                OnSwordActionCompleted?.Invoke(this, EventArgs.Empty);
+                ActionComplete();
                 break;
         }
     }

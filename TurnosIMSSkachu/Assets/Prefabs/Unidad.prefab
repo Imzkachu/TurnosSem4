@@ -73,7 +73,7 @@ RectTransform:
   m_GameObject: {fileID: 1212721210390814830}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8601358657921678757}
@@ -111,12 +111,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '2
-
-'
+  m_text: 2
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d93804ae79d9ad2439dd8b37932a0486, type: 2}
+  m_sharedMaterial: {fileID: -4099303358721677856, guid: d93804ae79d9ad2439dd8b37932a0486,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -140,12 +139,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.85
+  m_fontSize: 0.5
   m_fontSizeBase: 34.58
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 0.1
-  m_fontSizeMax: 72
+  m_fontSizeMax: 77.04
   m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -413,6 +412,9 @@ GameObject:
   - component: {fileID: 7590988392804202516}
   - component: {fileID: 5547411099525856328}
   - component: {fileID: 7637116797932379378}
+  - component: {fileID: 5084480795732312460}
+  - component: {fileID: 1949276397784985137}
+  - component: {fileID: 8930632104563790143}
   m_Layer: 7
   m_Name: Unidad
   m_TagString: Untagged
@@ -515,6 +517,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+--- !u!114 &5084480795732312460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4450998232049107239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e3682bf9bac5354ca639a41f9785383, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swordDamage: 50
+--- !u!114 &1949276397784985137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4450998232049107239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e386e991d7d1e2498c0c3208d14c9cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxMoveDistance: 4
+--- !u!114 &8930632104563790143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4450998232049107239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ab1175eaab4dd345bbbaedc3455a98e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootDamage: 40
+  obstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &5450501919162547292
 GameObject:
   m_ObjectHideFlags: 0

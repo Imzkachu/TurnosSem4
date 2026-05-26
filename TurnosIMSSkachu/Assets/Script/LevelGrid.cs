@@ -43,7 +43,7 @@ public class LevelGrid : MonoBehaviour
 
     private void Start()
     {
-        //Pathfinding.Instance.Setup(ancho, largo, cellSize);
+        Pathfinding.Instance.Setup(width, height, cellSize);
     }
 
     

@@ -130,15 +130,20 @@ public class GridSystemVisual : MonoBehaviour
         switch (selectedAction)
         {
             default:
-            /*case MoveAction moveAction:
+            case MoveAction moveAction:
                 gridVisualType = GridVisualType.White;
-                break;*/
+                break;
+
             case SpinAction spinAction:
                 gridVisualType = GridVisualType.Blue;
                 break;
-            /*case ShootAction shootAction:
+
+            case ShootAction shootAction:
                 gridVisualType = GridVisualType.Red;
-            break;*/
+
+            ShowGridPositionRange(selectedUnit.GetGridPosition(), shootAction.GetMaxShootDistance(), GridVisualType.RedSoft);
+                break;
+
             case SwordAction swordAction:
                 gridVisualType = GridVisualType.Red;
 

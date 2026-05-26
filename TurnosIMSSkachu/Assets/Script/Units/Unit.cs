@@ -35,6 +35,8 @@ public class Unit : MonoBehaviour
 		//Le avisamos al grid del nivel que tiene una unidad en esa posición
         LevelGrid.Instance.AddUnitAtGridPosition(gridPosition, this);
 
+        TurnSystem.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
+
         // Evento de cuando se muera la unidad
         healthSystem.OnDead += HealthSystem_OnDead;
         // Avisamos que una unidad nueva fue creada
@@ -123,17 +125,17 @@ public class Unit : MonoBehaviour
         return actionPoints;
     }
 
-    /*
+    
     private void TurnSystem_OnTurnChanged(object sender, EventArgs e)
     {
-        if ((IsEnemy() && !TurnSystem.instancia.IsPlayerTurn()) ||
-            (!IsEnemy() && TurnSystem.instancia.IsPlayerTurn()))
+        if ((IsEnemy() && !TurnSystem.Instance.IsPlayerTurn()) ||
+            (!IsEnemy() && TurnSystem.Instance.IsPlayerTurn()))
         {
             actionPoints = ACTION_POINTS_MAX;
 
             OnAnyActionPointsChanged?.Invoke(this, EventArgs.Empty);
         }
-    }*/
+    }
 
     public bool IsEnemy()
     {

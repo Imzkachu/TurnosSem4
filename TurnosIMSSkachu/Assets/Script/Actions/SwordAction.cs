@@ -7,6 +7,7 @@ public class SwordAction : BaseAction
 {
 
     [SerializeField]private int swordDamage = 50;
+    [SerializeField] private int enemyAIValue = 200;
 
     public static event EventHandler OnAnySwordHit;
 
@@ -74,17 +75,17 @@ public class SwordAction : BaseAction
 
     public override string GetActionName()
     {
-        return "Sword";
+        return "atack";
     }
-/*
+
     public override EnemyAIAction GetEnemyAIAction(GridPosition gridPosition)
     {
         return new EnemyAIAction
         {
             gridPosition = gridPosition,
-            actionValue = 200,
+            actionValue = enemyAIValue,
         };
-    }*/
+    }
 
     public override List<GridPosition> GetValidActionGridPositionList()
     {

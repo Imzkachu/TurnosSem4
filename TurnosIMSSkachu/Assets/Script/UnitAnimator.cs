@@ -15,17 +15,17 @@ public class UnitAnimator : MonoBehaviour
 
 
     private void Awake()
-    {/*
+    {
         if (TryGetComponent<MoveAction>(out MoveAction moveAction))
         {
             moveAction.OnStartMoving += MoveAction_OnStartMoving;
             moveAction.OnStopMoving += MoveAction_OnStopMoving;
-        }*/
-/*
+        }
+
         if (TryGetComponent<ShootAction>(out ShootAction shootAction))
         {
             shootAction.OnShoot += ShootAction_OnShoot;
-        }*/
+        }
         if (TryGetComponent<SwordAction>(out SwordAction swordAction))
         {
             swordAction.OnSwordActionStarted += SwordActionStartedFunction;
@@ -58,7 +58,7 @@ public class UnitAnimator : MonoBehaviour
     {
         animator.SetBool("IsWalking", false);
     }
-/*
+
     private void ShootAction_OnShoot(object sender, ShootAction.OnShootEventArgs e)
     {
         animator.SetTrigger("Shoot");
@@ -74,5 +74,5 @@ public class UnitAnimator : MonoBehaviour
 
         bulletProjectile.Setup(targetUnitShootAtPosition);
     }
-*/
+
 }

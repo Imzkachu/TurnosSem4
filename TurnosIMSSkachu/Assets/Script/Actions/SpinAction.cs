@@ -36,7 +36,7 @@ public class SpinAction : BaseAction
 
     public override string GetActionName()
     {
-        return "Spin";
+        return "spin";
     }
 
     public override List<GridPosition> GetValidActionGridPositionList()
@@ -53,7 +53,7 @@ public class SpinAction : BaseAction
     {
         return 1;
     }
-/*
+
     public override EnemyAIAction GetEnemyAIAction(GridPosition gridPosition)
     {
         return new EnemyAIAction
@@ -62,6 +62,6 @@ public class SpinAction : BaseAction
             actionValue = 0,
         };
     }
-*/
+
 
 }
